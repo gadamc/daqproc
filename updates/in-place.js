@@ -1,9 +1,10 @@
 function(doc, req) {
+
   var update = req.query.update;
-  var value;
 
   var message = {};
-  message['request'] = req;
+  if(req.query._showrequest == 'true')
+    message['request'] = req;
 
   var results = {};
   results['update'] = {};
@@ -12,6 +13,7 @@ function(doc, req) {
 
 
   var updateDoc = false;
+  var value;
 
   if(req.query.update != undefined){
 
@@ -42,7 +44,7 @@ function(doc, req) {
 
     
     if(value != undefined){
-      message['results']['update']['success'] = "set doc["+update+"] = " + message['results']['update']['value'];
+      message['results']['update']['success'] = "doc["+update+"] set to " + message['results']['update']['value'];
       message['results']['update']['type'] = typeof(value); 
       message['results']['update']['key'] = update;
       doc[update] = value;

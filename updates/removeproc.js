@@ -10,6 +10,8 @@ function(doc, req) {
     message['request'] = req;
 
   message['results'] = {};
+  if(test)
+    message['results']['test'] = 'this was a test';
 
   var updateDoc = false;
   var value;

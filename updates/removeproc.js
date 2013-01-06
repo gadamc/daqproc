@@ -16,11 +16,13 @@ function(doc, req) {
 
   if(procname == undefined){
     message['results']['error'] = 'req.query.procname undefined';
+    message['results']['doc_updated'] = false;
     return[null, JSON.stringify(message)]
   }
 
   if(procname.search('proc[0-9]$') != 0){
     message['results']['error'] = 'req.query.procname not equal to proc[0-9]$';
+    message['results']['doc_updated'] = false;
     return[null, JSON.stringify(message)]
   }
 
@@ -42,8 +44,11 @@ function(doc, req) {
       theMessage['results']['new_status'] = aDoc['status'];
       return true;
     }
-    else return false;
-  }
+    else {
+      theMessage['results']['new_status'] = aDoc['status'];
+      return false;
+    }
+  } 
 
   if(old_status != undefined){
     if(doc['status'] == old_status){
@@ -63,10 +68,12 @@ function(doc, req) {
   }
   
 
-  if(updateDoc)
+  if(updateDoc){
+    message['results']['doc_updated'] = true;
     return [doc, JSON.stringify(message)];
-
-  else
+  }
+  else{
+    message['results']['doc_updated'] = false;
     return [null, JSON.stringify(message)];
-
+  }
 }

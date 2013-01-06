@@ -3,6 +3,7 @@ function(doc, req) {
   var procname = req.query.procname;
   var old_status = req.query.old_status;
   var new_status = req.query.new_status;
+  var test = req.query.test;
 
   var message = {};
   if(req.query._showrequest == 'true')
@@ -70,7 +71,12 @@ function(doc, req) {
 
   if(updateDoc){
     message['results']['doc_updated'] = true;
-    return [doc, JSON.stringify(message)];
+
+    if (test != undefined)
+      return [doc, JSON.stringify(message)];
+    else
+      return [null, JSON.stringify(message)];
+
   }
   else{
     message['results']['doc_updated'] = false;

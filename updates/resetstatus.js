@@ -22,7 +22,7 @@ function(doc, req) {
   }
 
   function updateStatus(aDoc, aNewStatus, theMessage){
-    if(aNewStatus != undefined){
+    if(aNewStatus){
       aDoc['status'] = aNewStatus;
       theMessage['results']['new_status'] = aDoc['status'];
       return true;

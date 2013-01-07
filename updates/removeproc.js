@@ -11,7 +11,7 @@ function(doc, req) {
 
   message['results'] = {};
   if(test)
-    message['results']['test'] = 'this was a test';
+    message['results']['test'] = 'this was a test. nothing actually happened on the database.';
 
   var updateDoc = false;
   var value;

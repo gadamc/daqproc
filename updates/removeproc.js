@@ -74,7 +74,7 @@ function(doc, req) {
   if(updateDoc){
     message['results']['doc_updated'] = true;
 
-    if (test != undefined)
+    if (test == undefined)
       return [doc, JSON.stringify(message)];
     else
       return [null, JSON.stringify(message)];

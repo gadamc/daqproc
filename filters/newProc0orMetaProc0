@@ -2,7 +2,7 @@ function(doc, req) {
  if (doc.type == "daqdocument" && doc.status == "closed" && !doc.proc0 && doc.Intitule != "Edelweiss 2, run 15") {
  return true;
  } 
- else if (doc.type == "daqmetadatadocuments" && doc.status == "closed" && !doc.metaproc0 && doc["_id"].indexOf("_log") != -1) {
+ else if (doc.type == "daqmetadatadocuments" && doc.status == "closed" && !doc.metaproc0 ) {
  return true;
  }
  else {

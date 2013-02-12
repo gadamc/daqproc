@@ -1,5 +1,5 @@
 function(doc, req) {
- if (doc.type == "daqmetadatadocuments" && doc.status == "closed" && !doc.metaproc0 ) {
+ if (doc.type == "daqmetadatadocuments" && doc.status == "closed" && !doc.metaproc0 && doc["_id"].indexOf("_log") != -1) {
  return true;
  } else {
  return false;

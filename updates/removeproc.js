@@ -23,8 +23,8 @@ function(doc, req) {
     return[null, JSON.stringify(message)]
   }
 
-  if(procname.search('proc[0-9]$') != 0){
-    message['results']['error'] = 'req.query.procname not equal to proc[0-9]$';
+  if(procname.search('proc[0-9]$|hpss') != 0){
+    message['results']['error'] = 'req.query.procname not equal to regex: proc[0-9]|hpss$';
     message['results']['doc_updated'] = false;
     return[null, JSON.stringify(message)]
   }

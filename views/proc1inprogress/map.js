@@ -6,7 +6,7 @@ function zeroPad(num, places) {
   }
 
 
-    if(doc && doc.type == "daqdocument" && doc.run_name && doc.file_number && doc.status == "proc1 in progress"){
+    if(doc && doc.type == "daqdocument" && doc.run_name && doc.file_number !== undefined && doc.status == "proc1 in progress"){
 	emit( doc.run_name + "_" + zeroPad(doc.file_number,3), 1);
     }
 }
